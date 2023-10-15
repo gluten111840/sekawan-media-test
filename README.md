@@ -22,7 +22,7 @@ Laravel Version: 10.28.0
 ## Tutorial Penggunaan Aplikasi
 ### Pemasangan
 1. Clone repositori ini dengan perintah: `git clone https://github.com/gluten111840/sekawan-media-test.git`
-2. Masuk ke direktori buku-masjid: `$ cd sekawan-media-test`
+2. Masuk ke direktori sekawan-media-test: `$ cd sekawan-media-test`
 3. Instal dependensi menggunakan: `$ composer install`
 4. Salin berkas `.env.example` ke `.env`: `$ cp .env.example .env`
 5. Generate kunci aplikasi: `$ php artisan key:generate`
