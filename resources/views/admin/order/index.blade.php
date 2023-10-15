@@ -49,90 +49,16 @@ active
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <ul class="pagination pagination-month justify-content-center">
-                  <li class="page-item"><a class="page-link" href="#">«</a></li>
-                  <li class="page-item">
-                      <a class="page-link" href="#">
-                          <p class="page-month">Jan</p>
-                          <p class="page-year">2021</p>
-                      </a>
-                  </li>
-                  <li class="page-item active">
-                      <a class="page-link" href="#">
-                          <p class="page-month">Feb</p>
-                          <p class="page-year">2021</p>
-                      </a>
-                  </li>
-                  <li class="page-item">
-                      <a class="page-link" href="#">
-                          <p class="page-month">Mar</p>
-                          <p class="page-year">2021</p>
-                      </a>
-                  </li>
-                  <li class="page-item">
-                      <a class="page-link" href="#">
-                          <p class="page-month">Apr</p>
-                          <p class="page-year">2021</p>
-                      </a>
-                  </li>
-                  <li class="page-item">
-                      <a class="page-link" href="#">
-                          <p class="page-month">May</p>
-                          <p class="page-year">2021</p>
-                      </a>
-                  </li>
-                  <li class="page-item">
-                      <a class="page-link" href="#">
-                          <p class="page-month">Jun</p>
-                          <p class="page-year">2021</p>
-                      </a>
-                  </li>
-                  <li class="page-item">
-                      <a class="page-link" href="#">
-                          <p class="page-month">Jul</p>
-                          <p class="page-year">2021</p>
-                      </a>
-                  </li>
-                  <li class="page-item">
-                      <a class="page-link" href="#">
-                          <p class="page-month">Aug</p>
-                          <p class="page-year">2021</p>
-                      </a>
-                  </li>
-                  <li class="page-item">
-                      <a class="page-link" href="#">
-                          <p class="page-month">Sep</p>
-                          <p class="page-year">2021</p>
-                      </a>
-                  </li>
-                  <li class="page-item">
-                      <a class="page-link" href="#">
-                          <p class="page-month">Oct</p>
-                          <p class="page-year">2021</p>
-                      </a>
-                  </li>
-                  <li class="page-item">
-                      <a class="page-link" href="#">
-                          <p class="page-month">Nov</p>
-                          <p class="page-year">2021</p>
-                      </a>
-                  </li>
-                  <li class="page-item">
-                      <a class="page-link" href="#">
-                          <p class="page-month">Dec</p>
-                          <p class="page-year">2021</p>
-                      </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">»</a></li>
-                </ul>
                 <table id="order_table" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th class="text-center w-13p">No.</th>
-                    <th class="text-center w-13p">Nama Pesanan</th>
+                    <th class="text-center w-13p">Nomor Pesanan</th>
                     <th class="text-center w-13p">Driver</th>
                     <th class="text-center w-13p">Kendaraan</th>
                     <th class="text-center w-13p">Status</th>
+                    <th class="text-center w-13p">Durasi Pesanan</th>
+                    <th class="text-center w-13p">Persetujuan oleh</th>
                     <th class="text-center w-13p">Aksi</th>
                   </tr>
                   </thead>
@@ -142,7 +68,7 @@ active
                         @php($num++)
                     <tr>
                         <td class="text-center w-13p">{{ $num }}</td>
-                        <td>{{ $orders->name }}</td>
+                        <td>{{ $orders->no_pesanan }}</td>
                         <td>{{ $orders->driver }}</td>
                         <td>{{ $orders->vehicle }}</td>
                         <td class="text-center w-13p">
@@ -154,6 +80,8 @@ active
                             <span class="badge badge-danger">{{ $orders->status }}</span>
                             @endif
                         </td>
+                        <td class="text-center w-13p">{{ $orders->start_date }} - {{ $orders->end_date }}</td>
+                        <td class="text-center w-13p">{{ $orders->user }}</td>
                         <td class="text-center w-13p">
                             <a href="/order/detail/{{ $orders->id }}" class="btn btn-info"><i class="fa fa-eye"></i> Lihat</a>
                             @if(Auth::user()->role_id != '1')
@@ -183,6 +111,8 @@ active
                     <th class="text-center w-13p">Driver</th>
                     <th class="text-center w-13p">Kendaraan</th>
                     <th class="text-center w-13p">Status</th>
+                    <th class="text-center w-13p">Durasi Pesanan</th>
+                    <th class="text-center w-13p">Persetujuan oleh</th>
                     <th class="text-center w-13p">Aksi</th>
                   </tr>
                   </tfoot>
@@ -213,6 +143,23 @@ active
 <script src="{{ asset("bower_components/admin-lte/plugins/datatables-buttons/js/buttons.html5.min.js") }}"></script>
 <script src="{{ asset("bower_components/admin-lte/plugins/datatables-buttons/js/buttons.print.min.js") }}"></script>
 <script src="{{ asset("bower_components/admin-lte/plugins/datatables-buttons/js/buttons.colVis.min.js") }}"></script>
+<script>
+  $(function () {
+    $("#order_table").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print"]
+    }).buttons().container().appendTo('#order_table_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 <script>
     // when the start_date is < than today, give a message
     $(document).ready(function () {
@@ -322,23 +269,6 @@ active
         });
     });
 
-</script>
-<script>
-  $(function () {
-    $("#order_table").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print"]
-    }).buttons().container().appendTo('#order_table_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
 </script>
 <script>
     $('.modal').on('hidden.bs.modal', function () {

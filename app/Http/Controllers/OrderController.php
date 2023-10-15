@@ -112,11 +112,11 @@ class OrderController extends Controller
         return redirect()->route('order.index')->with('success', 'Order updated successfully.');
     }
 
-    public function destroy($id_vehicle)
+    public function destroy($id_order)
     {
-        DB::table('vehicles')->where('id', '=', $id_vehicle)->delete();
+        DB::table('order')->where('id', '=', $id_order)->delete();
 
-        return redirect()->route('order.index')->with('success', 'Vehicle deleted successfully.');
+        return redirect()->route('order.index')->with('success', 'Order deleted successfully.');
     }
 
     public function checkVehicleAvailability(Request $request)

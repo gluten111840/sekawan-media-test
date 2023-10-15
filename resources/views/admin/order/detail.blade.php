@@ -72,7 +72,7 @@ active
                         </div>
                         <div class="form-group row">
                             <label style="font-weight:bold;" for="driver"
-                                   class="col-md-4 text-md-right">{{ ('Kedaluwarsa Pesanan') }}</label>
+                                   class="col-md-4 text-md-right">{{ ('Nama Driver') }}</label>
                             <div class="col-md-6">
                                 <label style="font-weight:bold;" for="driver"
                                        class="col-md-5 text-md-left">{{ $order->driver }}</label>
@@ -80,7 +80,7 @@ active
                         </div>
                         <div class="form-group row">
                             <label style="font-weight:bold;" for="vehicle"
-                                   class="col-md-4 text-md-right">{{ ('Kedaluwarsa Pesanan') }}</label>
+                                   class="col-md-4 text-md-right">{{ ('Kendaraan') }}</label>
                             <div class="col-md-6">
                                 <label style="font-weight:bold;" for="vehicle"
                                        class="col-md-5 text-md-left">{{ $order->vehicle }}</label>
