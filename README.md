@@ -7,7 +7,7 @@ Email: admin@example.net \
 Password: password
 
 ### Penyetuju
-Email: penyetuju@example.net \
+Email: akseptor@example.net \
 Password: password
 
 ## Database
