@@ -27,7 +27,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'systemctl restart nginx'
+                sh 'sudo systemctl restart nginx'
             }
         }
     }
