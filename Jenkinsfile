@@ -6,12 +6,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                sh 'git pull origin main'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 sh 'composer install'
