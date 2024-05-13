@@ -9,6 +9,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh 'cd $PROJECT_PATH'
+                sh 'git pull origin main'
                 sh 'composer install'
                 sh 'npm install'
             }
