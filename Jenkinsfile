@@ -9,6 +9,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 dir(PROJECT_PATH) {
+                    sh 'pwd'
                     sh 'composer install'
                     sh 'npm install'
                 }
