@@ -8,27 +8,21 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                dir(PROJECT_PATH) {
-                    sh 'pwd'
-                    sh 'composer install'
-                    sh 'npm install'
-                }
+                sh 'cd $PROJECT_PATH'
+                sh 'composer install'
+                sh 'npm install'
             }
         }
 
         stage('Build') {
             steps {
-                dir(PROJECT_PATH) {
-                    sh 'npm run build'
-                }
+                sh 'npm run build'
             }
         }
 
         stage('Deploy') {
             steps {
-                dir(PROJECT_PATH) {
-                    sh 'sudo systemctl restart nginx'
-                }
+                sh 'sudo systemctl restart nginx'
             }
         }
     }
