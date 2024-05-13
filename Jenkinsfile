@@ -2,26 +2,32 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_PATH = "/var/www/sekawan-media-test"
+        PROJECT_PATH = "~/workspace/sekawan-media-test"
     }
 
     stages {
         stage('Install Dependencies') {
             steps {
-                sh 'composer install'
-                sh 'npm install'
+                dir(PROJECT_PATH) {
+                    sh 'composer install'
+                    sh 'npm install'
+                }
             }
         }
 
         stage('Build') {
             steps {
-                sh 'npm run build'
+                dir(PROJECT_PATH) {
+                    sh 'npm run build'
+                }
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'sudo systemctl restart nginx'
+                dir(PROJECT_PATH) {
+                    sh 'sudo systemctl restart nginx'
+                }
             }
         }
     }
