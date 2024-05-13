@@ -1,7 +1,7 @@
 @extends('layouts/admin_template')
 
 @section('title')
-<title>Nickelity | Detail Order - {{ $order->name }}</title>
+<title>OtoRentCar | Detail Order - {{ $order->name }}</title>
 @endsection
 
 @section('active_order')

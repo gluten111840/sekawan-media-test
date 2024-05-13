@@ -1,7 +1,7 @@
 @extends('layouts/admin_template')
 
 @section('title')
-<title>Nickelity | Update Driver - {{ $driver->name }}</title>
+<title>OtoRentCar | Update Driver - {{ $driver->name }}</title>
 @endsection
 
 @section('active_order')

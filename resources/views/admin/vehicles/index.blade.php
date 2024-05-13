@@ -1,7 +1,7 @@
 @extends('layouts.admin_template')
 
 @section('title')
-<title>Nickelity | Kendaraan</title>
+<title>OtoRentCar | Kendaraan</title>
 @endsection
 
 @section('styles')

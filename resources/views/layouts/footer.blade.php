@@ -5,5 +5,5 @@
       All rights reserved
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2023 Nickelity</strong>
+    <strong>Copyright &copy; 2023 OtoRentCar</strong>
   </footer>
