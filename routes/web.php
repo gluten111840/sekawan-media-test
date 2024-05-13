@@ -38,6 +38,8 @@ Route::middleware(['auth', 'role:admin,akseptor'])->group(function () {
     Route::prefix('driver')->name('driver.')->group(function () {
         Route::get('/', [DriverController::class, 'index'])->name('index');
         Route::post('/save', [DriverController::class, 'store'])->name('store');
+        Route::get('/update/{driver}', [DriverController::class, 'detailEdit'])->name('edit');
+        Route::post('/update/{driver}', [DriverController::class, 'update'])->name('update');
         Route::delete('/delete/{driver}', [DriverController::class, 'destroy'])->name('destroy');
     });
 

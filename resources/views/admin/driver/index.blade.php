@@ -66,6 +66,7 @@ active
                         <td>{{ $drivers->age }}</td>
                         <td class="text-center w-13p">
                             @if(Auth::user()->role->name == 'admin')
+                            <a href="/driver/update/{{ $drivers->id }}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                             <form class="d-inline"
                                   action="{{route('driver.destroy', $drivers->id)}}"
                                   method="POST">
